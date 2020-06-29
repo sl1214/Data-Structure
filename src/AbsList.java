@@ -25,7 +25,7 @@ public abstract class AbsList<T> implements Iterable<T>, List<T> {
 
     public boolean add(T x) {
         add(length, x);
-        return false;
+        return true;
     }
 
     public void append(T x) {

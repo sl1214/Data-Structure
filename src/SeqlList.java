@@ -3,11 +3,14 @@ import java.util.*;
 public class SeqlList<T> extends AbsList<T> {
 
     private int incrementSize;
+
     protected T[] data;
-    public SeqlList(){
+
+    public SeqlList() {
         this(16);
     }
-    public SeqlList(int capacity){
+
+    public SeqlList(int capacity) {
         if (capacity <= 0) {
             capacity = 16;
         }
@@ -15,30 +18,58 @@ public class SeqlList<T> extends AbsList<T> {
         incrementSize = 0;
         data = (T[]) new Object[capacity];
     }
-    public SeqlList(T[] elem){
+
+    public SeqlList(T[] elem) {
         length = elem.length;
         incrementSize = 0;
-        data = Arrays.copyOf(elem,length);
+        data = Arrays.copyOf(elem, length);
     }
 
-    public void setInc(int inc) {}
+    public void setIncr(int inc) {
+        incrementSize = inc;
+    }
 
-    public void setCapacity(int newSize){}
+    public void setCapacity(int newSize) {
+        data = Arrays.copyOf(data, newSize);
+    }
 
-    public int getCapacity(){return data.length;}
+    public int getCapacity() {
+        return data.length;
+    }
+
+    private void grow() {
+        int newSzie = data.length + incrementSize;
+        data = Arrays.copyOf(data, newSzie);
+    }
 
     @Override
-    public int size(){return length;}
+    public int size() {
+        return length;
+    }
 
     @Override
-    public T get(int i){return data[i];}
+    public T get(int i) {
+        if (i < 0 || i > length - 1) {
+            return null;
+        } else {
+            return data[i];
+        }
+    }
 
     @Override
     public T set(int i, T x) {
-        return null;
+        if (i < 0 || i > length - 1) {
+            return null;
+        } else {
+            T oldValue = data[i];
+            data[i] = x;
+            return oldValue;
+        }
     }
 
-    private int compare(T a,T b){return 0;}
+    private int compare(T a, T b) {
+        return 0;
+    }
 
 
     @Override
@@ -46,20 +77,36 @@ public class SeqlList<T> extends AbsList<T> {
         return 0;
     }
 
-    private void grow(){}
-
-    public void addSort(T x){}
+    public void addSort(T x) {
+    }
 
     @Override
     public void add(int i, T x) {
-
+        if (length == data.length) {
+            grow();
+        }
+        if (i<0) {
+            i = 0;
+        }
+        if (i>length) {
+            i = length;
+        }
+        for (int j = length-1;j>=i;j++) {
+            data[j+1] = data[j];
+        }
+        data[i] = x;
+        length++;
     }
 
-    public void sort(){}
+    public void sort() {
+    }
 
-    protected void insertOrder(int end,T x){}
+    protected void insertOrder(int end, T x) {
+    }
 
-    public String toString(){return null;}
+    public String toString() {
+        return null;
+    }
 
     @Override
     public boolean contains(Object o) {
@@ -146,18 +193,18 @@ public class SeqlList<T> extends AbsList<T> {
         return new MyIterator();
     }
 
-    class MyIterator implements Iterator<T>{
+    class MyIterator implements Iterator<T> {
         private int index = 0;
 
-        public boolean hasNext(){
+        public boolean hasNext() {
             return index != length();
         }
 
-        public T next(){
+        public T next() {
             return get(index++);
         }
 
-        public void remove(){
+        public void remove() {
 
         }
 
