@@ -18,7 +18,7 @@ public class LinkList<T> extends AbsList<T> implements Iterator<T> {
 
     protected Lnode<T> getNode(int i) {
         Lnode<T> x = null;
-        for ( x = first;x != null && i >0;i--){
+        for (x = first; x != null && i > 0 && i<length; i--) {
             x = x.next;
         }
         return x;
@@ -26,12 +26,24 @@ public class LinkList<T> extends AbsList<T> implements Iterator<T> {
 
     @Override
     public T get(int i) {
-        return null;
+        Lnode<T> p = getNode(i);
+        if ( p == null) {
+            return null;
+        } else {
+            return p.data;
+        }
     }
 
     @Override
     public T set(int index, T element) {
-        return null;
+        Lnode<T> p = getNode(index);
+        if ( p == null) {
+            return null;
+        } else {
+            T oldData = p.data;
+            p.data = element;
+            return oldData;
+        }
     }
 
     @Override
@@ -43,6 +55,33 @@ public class LinkList<T> extends AbsList<T> implements Iterator<T> {
     public void add(int i, T x) {
 
     }
+
+    public void addBack(T x) {
+
+    }
+
+    public void Front(T x) {
+
+    }
+
+    public void sort() {
+    }
+
+    public void addSort() {
+    }
+
+    private void insertOrder(Lnode<T> s) {
+
+    }
+
+    protected Lnode<T> removeNode(int i) {
+        return null;
+    }
+
+    public T search(T key) {
+        return null;
+    }
+
 
     @Override
     public int size() {
@@ -60,7 +99,7 @@ public class LinkList<T> extends AbsList<T> implements Iterator<T> {
     }
 
     @Override
-    public <T1> T1[] toArray(T1[] a) {
+    public <T> T[] toArray(T[] a) {
         return null;
     }
 
@@ -109,8 +148,8 @@ public class LinkList<T> extends AbsList<T> implements Iterator<T> {
     @Override
     public T remove(int i) {
         T oldData = null;
-        for (Lnode<T> x = first; x != null;) {
-            if (i==1){
+        for (Lnode<T> x = first; x != null; ) {
+            if (i == 1) {
                 oldData = x.next.data;
                 x.next = x.next.next;
                 break;
@@ -120,7 +159,6 @@ public class LinkList<T> extends AbsList<T> implements Iterator<T> {
         }
         return oldData;
     }
-
 
 
     @Override
