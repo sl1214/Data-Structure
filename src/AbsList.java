@@ -36,8 +36,8 @@ public abstract class AbsList<T> implements Iterable<T>, List<T> {
         return indexOf(0, length, o);
     }
 
-    public int indexOf(int begin ,T o) {
-        return indexOf(begin,length,o);
+    public int indexOf(int begin, T o) {
+        return indexOf(begin, length, o);
     }
 
     public T remace(T o) {

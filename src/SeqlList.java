@@ -68,16 +68,35 @@ public class SeqlList<T> extends AbsList<T> {
     }
 
     private int compare(T a, T b) {
-        return 0;
+        if (a instanceof Comparable && b instanceof Comparable) {
+            return ((Comparable) a).compareTo((Comparable) b);
+        } else {
+            return ((String) a).compareTo((String) b);
+        }
     }
 
 
     @Override
     public int indexOf(int begin, int end, Object x) {
-        return 0;
+        if (x == null) {
+            for (int i = begin; i <= end; i++) {
+                if (data[i] == x) {
+                    return i;
+                }
+            }
+        } else {
+            for (int i = begin; i <= end; i++) {
+                if (x.equals(data[i])) {
+                    return i;
+                }
+            }
+        }
+        return -1;
     }
 
     public void addSort(T x) {
+        insertOrder(length, x);
+        length++;
     }
 
     @Override
@@ -85,27 +104,48 @@ public class SeqlList<T> extends AbsList<T> {
         if (length == data.length) {
             grow();
         }
-        if (i<0) {
+        if (i < 0) {
             i = 0;
         }
-        if (i>length) {
+        if (i > length) {
             i = length;
         }
-        for (int j = length-1;j>=i;j++) {
-            data[j+1] = data[j];
+        for (int j = length - 1; j >= i; j++) {
+            data[j + 1] = data[j];
         }
         data[i] = x;
         length++;
     }
 
     public void sort() {
+        for (int i = 1; i < length; i++) {
+            insertOrder(i, data[i]);
+        }
     }
 
     protected void insertOrder(int end, T x) {
+        if (length == data.length) {
+            grow();
+        }
+        int k;
+        for (k = end - 1; k >= 0; k--) {
+            if (compare(x, data[k]) < 0) {
+                data[k + 1] = data[k];
+            } else {
+                break;
+            }
+        }
+        data[k + 1] = x;
     }
 
     public String toString() {
-        return null;
+        StringBuilder strb = new StringBuilder();
+        strb.append("(");
+        for (int i=0;i<length-1;i++) {
+            strb.append(data[i].toString()).append(",");
+        }
+        strb.append(data[length - 1]).append(")");
+        return new String(strb);
     }
 
     @Override
@@ -115,17 +155,27 @@ public class SeqlList<T> extends AbsList<T> {
 
     @Override
     public Object[] toArray() {
-        return new Object[0];
+        return Arrays.copyOf(this.data, this.length);
     }
 
     @Override
     public <T> T[] toArray(T[] a) {
-        return null;
+        if (a.length < length) {
+            return (T[]) Arrays.copyOf(this.data, this.length, a.getClass());
+        }
+        System.arraycopy(this.data,0,a,0,this.length);
+        if (a.length > this.length) {
+            for (int i = this.length;i<a.length;i++) {
+                a[i] = null;
+            }
+        }
+        return a;
     }
 
     @Override
     public boolean remove(Object o) {
-        return false;
+        remove(indexOf(o));
+        return true;
     }
 
     @Override
@@ -155,12 +205,23 @@ public class SeqlList<T> extends AbsList<T> {
 
     @Override
     public void clear() {
-
+        for (int i = 0; i < length - 1; i++) {
+            data[i] = null;
+            length = 0;
+        }
     }
 
     @Override
     public T remove(int i) {
-        return null;
+        if (i < 0 || i > length - 1) {
+            throw new IndexOutOfBoundsException("下标越界：i=" + i);
+        }
+        T oldData = data[i];
+        for (int j = i; j < length - 2; j++) {
+            data[j] = data[j + 1];
+        }
+        data[length - 1] = null;
+        return oldData;
     }
 
     @Override
