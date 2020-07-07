@@ -299,6 +299,7 @@ public class LinkList<T> extends AbsList<T> implements Iterator<T> {
 
     @Override
     public Iterable<T> iterable() {
+
         return null;
     }
 
@@ -314,10 +315,20 @@ public class LinkList<T> extends AbsList<T> implements Iterator<T> {
 
     @Override
     public Iterator<T> iterator() {
-        return null;
+        this.iterator = new LinkIterator();
+        return this.iterator;
     }
 
     private class LinkIterator implements Iterator<T> {
 
+        @Override
+        public boolean hasNext() {
+            return false;
+        }
+
+        @Override
+        public T next() {
+            return null;
+        }
     }
 }
