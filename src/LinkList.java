@@ -1,3 +1,4 @@
+import java.lang.reflect.Array;
 import java.util.*;
 
 public class LinkList<T> extends AbsList<T> implements Iterator<T> {
@@ -195,12 +196,26 @@ public class LinkList<T> extends AbsList<T> implements Iterator<T> {
 
     @Override
     public Object[] toArray() {
-        return new Object[0];
+        Object[] a = new Object[length];
+        Lnode<T> p = first;
+        for (int i = 0; i < length; i++) {
+            a[i] = p.data;
+            p = p.next;
+        }
+        return a;
     }
 
     @Override
     public <T> T[] toArray(T[] a) {
-        return null;
+        Lnode<T> p = (Lnode<T>) this.first;
+        if (a.length < length) {
+            a = (T[]) Array.newInstance(a.getClass().getComponentType(), length);
+        }
+        for (int i = 0; i < length; i++) {
+            a[i] = p.data;
+            p = p.next;
+        }
+        return a;
     }
 
     @Override
