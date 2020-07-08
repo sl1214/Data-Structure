@@ -116,10 +116,14 @@ public class LinkList<T> extends AbsList<T> implements Iterator<T> {
         if (first == null) {
             return;
         } else {
+            /*LinkList<T> linkList = new LinkList<>();
+            linkList.first=first;*/
             Lnode<T> node = first.next;
             first.next = null;
+            last = first;
             while (node != null) {
                 Lnode<T> s = node.next;
+
                 insertOrder(node);
                 node = s;
             }
@@ -141,6 +145,7 @@ public class LinkList<T> extends AbsList<T> implements Iterator<T> {
         } else if (s.compareTo(last) >= 0) {
             last.next = s;
             last = s;
+            last.next = null;
         } else {
             Lnode<T> node = first;
             while (node != null) {
@@ -321,14 +326,25 @@ public class LinkList<T> extends AbsList<T> implements Iterator<T> {
 
     private class LinkIterator implements Iterator<T> {
 
+        private int index = 0;
+
+        private Lnode<T> current = first;
+
         @Override
         public boolean hasNext() {
-            return false;
+            return (index != length) && current != null;
         }
 
         @Override
         public T next() {
-            return null;
+            T temp = current.data;
+            current = current.next;
+            index++;
+            return temp;
+        }
+
+        public int index(){
+            return index;
         }
     }
 }
