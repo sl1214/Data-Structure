@@ -1,5 +1,8 @@
 import java.lang.reflect.Array;
-import java.util.*;
+import java.util.Collection;
+import java.util.Iterator;
+import java.util.List;
+import java.util.ListIterator;
 
 public class LinkList<T> extends AbsList<T> implements Iterator<T> {
 
@@ -191,6 +194,7 @@ public class LinkList<T> extends AbsList<T> implements Iterator<T> {
 
     @Override
     public int size() {
+
         return 0;
     }
 
@@ -264,6 +268,12 @@ public class LinkList<T> extends AbsList<T> implements Iterator<T> {
             x = next;
         }
         first = last = null;
+    }
+
+    public void addFront(T x) {
+        Lnode<T> node = new Lnode<T>(x);
+        node.next = first;
+        first = node;
     }
 
     @Override
@@ -343,7 +353,7 @@ public class LinkList<T> extends AbsList<T> implements Iterator<T> {
             return temp;
         }
 
-        public int index(){
+        public int index() {
             return index;
         }
     }
