@@ -141,7 +141,7 @@ public class SeqlList<T> extends AbsList<T> {
     public String toString() {
         StringBuilder strb = new StringBuilder();
         strb.append("(");
-        for (int i=0;i<length-1;i++) {
+        for (int i = 0; i < length - 1; i++) {
             strb.append(data[i].toString()).append(",");
         }
         strb.append(data[length - 1]).append(")");
@@ -163,9 +163,9 @@ public class SeqlList<T> extends AbsList<T> {
         if (a.length < length) {
             return (T[]) Arrays.copyOf(this.data, this.length, a.getClass());
         }
-        System.arraycopy(this.data,0,a,0,this.length);
+        System.arraycopy(this.data, 0, a, 0, this.length);
         if (a.length > this.length) {
-            for (int i = this.length;i<a.length;i++) {
+            for (int i = this.length; i < a.length; i++) {
                 a[i] = null;
             }
         }
@@ -221,6 +221,7 @@ public class SeqlList<T> extends AbsList<T> {
             data[j] = data[j + 1];
         }
         data[length - 1] = null;
+        length = length - 1;
         return oldData;
     }
 

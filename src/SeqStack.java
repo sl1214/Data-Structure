@@ -1,6 +1,6 @@
-public class SqlStack<T> {
+public class SeqStack<T> {
     private SeqlList<T> seqlList;
-    public SqlStack(int num){
+    public SeqStack(int num){
         seqlList = new SeqlList<T>(num);
     }
     boolean isEmpty() {
