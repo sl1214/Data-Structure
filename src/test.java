@@ -39,6 +39,7 @@ public class test {
         root.rChild.rChild.data = "F";
         root.preOrder(root);
         System.out.println("先序遍历完");
+        System.out.println(root.count);
         root.inOrder(root);
         System.out.println("中序遍历完");
         root.postOrdeer(root);

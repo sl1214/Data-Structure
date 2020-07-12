@@ -1,5 +1,6 @@
 public class BinNode<T> {
     T data;
+    Integer count = 0;
     BinNode<T> lChild;
     BinNode<T> rChild;
 
@@ -45,6 +46,9 @@ public class BinNode<T> {
     }
 
     public void visit(BinNode<T> node) {
+        if (node.lChild == null && node.rChild == null) {
+            count++;
+        }
         System.out.print(node.data.toString());
     }
 
