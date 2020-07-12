@@ -5,30 +5,36 @@ public class BinNode<T> {
 
     public void preOrder(BinNode<T> root) {
         if (root != null) {
-            System.out.println(root);
+            visit(root);
             preOrder(root.lChild);
             preOrder(root.rChild);
         }
     }
 
     public void inOrder(BinNode<T> root) {
-        inOrder(root.lChild);
-        System.out.println(root);
-        inOrder(root.rChild);
+        if (root != null) {
+            inOrder(root.lChild);
+            visit(root);
+            inOrder(root.rChild);
+
+        }
     }
 
     public void postOrdeer(BinNode<T> root) {
-        postOrdeer(root.lChild);
-        postOrdeer(root.rChild);
-        System.out.println(root);
+        if (root != null) {
+            postOrdeer(root.lChild);
+            postOrdeer(root.rChild);
+            visit(root);
+        }
+
     }
 
     public void order(BinNode<T> root) {
         LinkQue<BinNode> que = new LinkQue<BinNode>();
         que.add(root);
-        while (!que.isEmpty()) {
-            BinNode p = que.getHead();
-            visit(p);
+        BinNode p;
+        while ((p = que.getHead()) != null) {
+                visit(p);
             if (p.lChild != null) {
                 que.add(p.lChild);
             }
@@ -39,7 +45,7 @@ public class BinNode<T> {
     }
 
     public void visit(BinNode<T> node) {
-        System.out.println(node.data.toString());
+        System.out.print(node.data.toString());
     }
 
 }

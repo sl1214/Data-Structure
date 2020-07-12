@@ -3,7 +3,7 @@ import java.util.Iterator;
 public class test {
 
     public static void main(String [] args ){
-        LinkList<Integer> linkList = new LinkList<>();
+        /*LinkList<Integer> linkList = new LinkList<>();
         linkList.add(31);
         linkList.add(21);
         linkList.add(5);
@@ -21,6 +21,29 @@ public class test {
         linkList.sort();
         for (Integer i :linkList) {
             System.out.println(i+" ");
-        }
+        }*/
+
+        BinNode<String> root = new BinNode<String>();
+        root.data = "A";
+        root.lChild = new BinNode<String>();
+        root.lChild.data = "B";
+        root.lChild.lChild = new BinNode<String>();
+        root.lChild.lChild.data = "D";
+        root.lChild.rChild = new BinNode<String>();
+        root.lChild.rChild.data ="E";
+        root.lChild.rChild.lChild = new BinNode<String>();
+        root.lChild.rChild.lChild.data = "G";
+        root.rChild = new BinNode<String>();
+        root.rChild.data = "C";
+        root.rChild.rChild = new BinNode<String>();
+        root.rChild.rChild.data = "F";
+        root.preOrder(root);
+        System.out.println("先序遍历完");
+        root.inOrder(root);
+        System.out.println("中序遍历完");
+        root.postOrdeer(root);
+        System.out.println("后序遍历完");
+        root.order(root);
+        System.out.println("层次遍历完");
     }
 }

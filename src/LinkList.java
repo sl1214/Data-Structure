@@ -280,6 +280,11 @@ public class LinkList<T> extends AbsList<T> implements Iterator<T> {
     public T remove(int i) {
         T oldData = null;
         for (Lnode<T> x = first; x != null; ) {
+            if (i == 0) {
+                oldData = x.data;
+                first = x.next;
+                break;
+            }
             if (i == 1) {
                 oldData = x.next.data;
                 x.next = x.next.next;
