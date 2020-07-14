@@ -4,6 +4,14 @@ public class BinNode<T> {
     BinNode<T> lChild;
     BinNode<T> rChild;
 
+    public BinNode(T c) {
+        data = c;
+    }
+
+    public BinNode() {
+
+    }
+
     public void preOrder(BinNode<T> root) {
         if (root != null) {
             visit(root);
@@ -51,5 +59,28 @@ public class BinNode<T> {
         }
         System.out.print(node.data.toString());
     }
+
+    public BinNode<Character> restore(char pre[],char ino[], int ps, int low, int high) {
+        BinNode<Character> t = new BinNode<Character>();
+        if (low>high || ps>8) {
+            t = null;
+        } else {
+            t = new BinNode<Character>(pre[ps]);
+            int k = findInRoot(ino,pre[ps],low,high);
+            t.lChild = restore(pre,ino,ps+1,low,k-1);
+            t.rChild = restore(pre,ino,ps+1+(k-low),k+1,high);
+        }
+        return t;
+    }
+
+    private int findInRoot(char ino[],char root,int low,int high) {
+        for (int i = low ;i<=high;i++) {
+            if (ino[i] == root) {
+                return  i;
+            }
+        }
+        return 0;
+    }
+
 
 }

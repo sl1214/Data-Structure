@@ -3,6 +3,8 @@ import java.util.Iterator;
 public class test {
 
     public static void main(String [] args ){
+
+        //测试迭代器
         /*LinkList<Integer> linkList = new LinkList<>();
         linkList.add(31);
         linkList.add(21);
@@ -23,7 +25,8 @@ public class test {
             System.out.println(i+" ");
         }*/
 
-        BinNode<String> root = new BinNode<String>();
+        //树的遍历
+        /*BinNode<String> root = new BinNode<String>();
         root.data = "A";
         root.lChild = new BinNode<String>();
         root.lChild.data = "B";
@@ -45,6 +48,13 @@ public class test {
         root.postOrdeer(root);
         System.out.println("后序遍历完");
         root.order(root);
-        System.out.println("层次遍历完");
+        System.out.println("层次遍历完");*/
+
+        //根据先序遍历和中序遍历还原树结构
+        BinNode<Character> root = new BinNode<Character>();
+        char[] a = {'A','B','C','D','E','F','G','H','I'};
+        char[] b = {'B','C','A','E','D','G','H','F','I'};
+        BinNode<Character> s = root.restore(a,b,0,0,a.length-1);
+        System.out.println();
     }
 }
