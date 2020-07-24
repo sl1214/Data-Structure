@@ -51,10 +51,14 @@ public class test {
         System.out.println("层次遍历完");*/
 
         //根据先序遍历和中序遍历还原树结构
-        BinNode<Character> root = new BinNode<Character>();
+       /* BinNode<Character> root = new BinNode<Character>();
         char[] a = {'A','B','C','D','E','F','G','H','I'};
         char[] b = {'B','C','A','E','D','G','H','F','I'};
         BinNode<Character> s = root.restore(a,b,0,0,a.length-1);
-        System.out.println();
+        System.out.println();*/
+        char[] c = {'a','b','c'};
+        double[] w = {2,3,4};
+        CodeTable codeTable = new CodeTable(c,w);
+        System.out.println(codeTable.toString());
     }
 }

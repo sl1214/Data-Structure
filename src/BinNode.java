@@ -25,7 +25,6 @@ public class BinNode<T> {
             inOrder(root.lChild);
             visit(root);
             inOrder(root.rChild);
-
         }
     }
 
