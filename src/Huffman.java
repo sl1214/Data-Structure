@@ -23,10 +23,8 @@ public class Huffman {
         for (i = n;i<m;i++){
             select(i-1,s);
             HT[i].lchild = s[0];
-            System.out.println(HT.length);
-            System.out.println(s.length);
-            System.out.println(i);
-            HT[i].rchild = s[i];
+
+            HT[i].rchild = s[1];
             HT[s[0]].parent = i;
             HT[s[1]].parent = i;
             HT[i].weight = HT[s[0]].weight+HT[s[1]].weight;
