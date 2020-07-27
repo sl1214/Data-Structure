@@ -56,9 +56,24 @@ public class test {
         char[] b = {'B','C','A','E','D','G','H','F','I'};
         BinNode<Character> s = root.restore(a,b,0,0,a.length-1);
         System.out.println();*/
-        char[] c = {'a','b','c'};
+
+        //测试huffman数结构
+        /*char[] c = {'a','b','c'};
         double[] w = {2,3,4};
         CodeTable codeTable = new CodeTable(c,w);
-        System.out.println(codeTable.toString());
+        System.out.println(codeTable.toString());*/
+
+        //测试huffman编码解码
+        char[] sym = {'北','京','天','很','蓝','人','好'};
+        double[] wei = {8,8,2,7,3,6,6};
+        Huffman ht = new Huffman(sym,wei);
+        ht.createHuffmanTree();
+        ht.createCodeTable();
+        ht.outputTree();
+        String x = "北京天很蓝被禁人很好很好很蓝";
+        String code = ht.HuffmanCode(x);
+        System.out.println(code);
+        String y = "01110001000001011001100100111101001100110100010001110100010110011100111101";
+        System.out.println(ht.HuffmanDecode(y));
     }
 }
