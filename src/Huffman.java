@@ -75,9 +75,8 @@ public class Huffman {
                 cd[--start]='0';
             } else {
                 j = p;
-                p = HT[p].parent;
             }
-
+            p = HT[p].parent;
         }
         return new String(cd,start,n-start-1);
     }
