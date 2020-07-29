@@ -17,6 +17,9 @@ public class Huffman {
     public void createHuffmanTree() {
         int i;
         int s[] = new int[2];
+        for (int x :s) {
+            System.out.println(x);
+        }
         for (i = 0; i < n; i++) {
             HT[i]= new HFnode(CO.w[i],-1,-1,-1);
         }
@@ -32,14 +35,10 @@ public class Huffman {
     }
 
     private void select(int low, int[] minw) {
-        double minL;
-        double minR;
-        int indexL;
-        int indexR;
-        minL = Double.MAX_VALUE;
-        minR = Double.MAX_VALUE;
-        indexL = -1;
-        indexR = -1;
+        double minL = Double.MAX_VALUE;
+        double minR = Double.MAX_VALUE;
+        int indexL = -1;
+        int indexR = -1;
         for (int i=0;i<=low;i++) {
             if (HT[i].parent == -1 && HT[i].weight< minL) {
                 minR = minL;
@@ -63,9 +62,9 @@ public class Huffman {
             if (CO.c[i]==ch) {
                 break;
             }
-            if (i>=n) {
-                return null;
-            }
+        }
+        if (i>=n) {
+            return null;
         }
         start = n-1;
         int j = i;
@@ -74,8 +73,9 @@ public class Huffman {
             if (HT[p].lchild==j) {
                 cd[--start]='0';
             } else {
-                j = p;
+                cd[--start]='1';
             }
+            j = p;
             p = HT[p].parent;
         }
         return new String(cd,start,n-start-1);
