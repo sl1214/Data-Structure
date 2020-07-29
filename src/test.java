@@ -70,11 +70,11 @@ public class test {
         ht.createHuffmanTree();
         ht.createCodeTable();
         ht.outputTree();
-        String x = "北京天很蓝被禁人很好很好很蓝";
+        String x = "北京天很蓝北京人很好很好很蓝";
         String code = ht.HuffmanCode(x);
         System.out.println(code);
 
-        String y = "01110001000001011001100100111101001100110100010001110100010110011100111101";
+        String y = "00011000111100100011011111101111101111001";
         System.out.println(ht.HuffmanDecode(y));
     }
 }
