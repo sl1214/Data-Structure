@@ -64,7 +64,7 @@ public class test {
         System.out.println(codeTable.toString());*/
 
         //测试huffman编码解码
-        char[] sym = {'北','京','天','很','蓝','人','好'};
+        /*char[] sym = {'北','京','天','很','蓝','人','好'};
         double[] wei = {8,8,2,7,3,6,6};
         Huffman ht = new Huffman(sym,wei);
         ht.createHuffmanTree();
@@ -73,8 +73,12 @@ public class test {
         String x = "北京天很蓝北京人很好很好很蓝";
         String code = ht.HuffmanCode(x);
         System.out.println(code);
-
         String y = "00011000111100100011011111101111101111001";
-        System.out.println(ht.HuffmanDecode(y));
+        System.out.println(ht.HuffmanDecode(y));*/
+
+        //测试阶乘递归
+        Factorial factorial = new Factorial();
+        System.out.println(factorial.getFactorial(10));
     }
+
 }
