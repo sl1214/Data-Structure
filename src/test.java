@@ -77,8 +77,21 @@ public class test {
         System.out.println(ht.HuffmanDecode(y));*/
 
         //测试阶乘递归
-        Factorial factorial = new Factorial();
-        System.out.println(factorial.getFactorial(10));
+        /*Factorial factorial = new Factorial();
+        System.out.println(factorial.getFactorial(10));*/
+
+        //汉罗塔问题
+        /*Hanoi.pr(32,"A","B","C");
+        SeqStack<Integer> a = new SeqStack<>(32);
+        SeqStack<Integer> b = new SeqStack<>(32);
+        SeqStack<Integer> c = new SeqStack<>(32);
+        for (int i = 1;i<=32;i++) {
+            a.push(i);
+        }
+        Hanoi hanoi = new Hanoi(a,b,c);
+        hanoi.findHanoi(32,a,b,c);
+        System.out.println("完成");*/
     }
+
 
 }
