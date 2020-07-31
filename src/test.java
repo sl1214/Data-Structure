@@ -2,7 +2,7 @@ import java.util.Iterator;
 
 public class test {
 
-    public static void main(String [] args ){
+    public static void main(String[] args) {
 
         //测试迭代器
         /*LinkList<Integer> linkList = new LinkList<>();
@@ -91,6 +91,15 @@ public class test {
         Hanoi hanoi = new Hanoi(a,b,c);
         hanoi.findHanoi(32,a,b,c);
         System.out.println("完成");*/
+
+        //八皇后问题
+        Queen queen = new Queen(8);
+        queen.findQueenSite();
+        System.out.println(queen.count);
+        System.out.println("二次统计");
+        queen.count = 0;
+        queen.findSite(0);
+        System.out.println(queen.count);
     }
 
 
