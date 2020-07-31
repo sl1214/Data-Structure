@@ -93,7 +93,7 @@ public class test {
         System.out.println("完成");*/
 
         //八皇后问题
-        Queen queen = new Queen(8);
+        Queen queen = new Queen(20);
         queen.findQueenSite();
         System.out.println(queen.count);
         System.out.println("二次统计");

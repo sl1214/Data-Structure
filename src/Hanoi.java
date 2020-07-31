@@ -10,9 +10,11 @@ public class Hanoi {
     }
 
     public void findHanoi(int n, SeqStack<Integer> from ,SeqStack<Integer> buffer ,SeqStack<Integer> to ) {
+        //当只有一个盘子要移动时，直接从出发盘移到目的盘
         if (n==1) {
             to.push(from.pop());
         } else {
+            //否则，则先将前n-1个盘子移动到中间盘，再将第n盘移动到目的盘，再将前n个盘从中间盘移动到目的盘
             findHanoi(n-1,from,to,buffer);
             findHanoi(1,from,buffer,to);
             findHanoi(n-1,buffer,from,to);
