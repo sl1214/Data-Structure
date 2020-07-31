@@ -64,7 +64,7 @@ public class test {
         System.out.println(codeTable.toString());*/
 
         //测试huffman编码解码
-        /*char[] sym = {'北','京','天','很','蓝','人','好'};
+        char[] sym = {'北','京','天','很','蓝','人','好'};
         double[] wei = {8,8,2,7,3,6,6};
         Huffman ht = new Huffman(sym,wei);
         ht.createHuffmanTree();
@@ -74,7 +74,7 @@ public class test {
         String code = ht.HuffmanCode(x);
         System.out.println(code);
         String y = "00011000111100100011011111101111101111001";
-        System.out.println(ht.HuffmanDecode(y));*/
+        System.out.println(ht.HuffmanDecode(y));
 
         //测试阶乘递归
         /*Factorial factorial = new Factorial();
@@ -93,13 +93,13 @@ public class test {
         System.out.println("完成");*/
 
         //八皇后问题
-        Queen queen = new Queen(20);
+        /*Queen queen = new Queen(20);
         queen.findQueenSite();
         System.out.println(queen.count);
         System.out.println("二次统计");
         queen.count = 0;
         queen.findSite(0);
-        System.out.println(queen.count);
+        System.out.println(queen.count);*/
     }
 
 

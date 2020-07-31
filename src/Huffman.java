@@ -108,8 +108,22 @@ public class Huffman {
     public String HuffmanDecode(String codeStr) {
         int p;
         StringBuilder strb = new StringBuilder();
-        //我能看明白这一段，但是我写不出这一段
-        for (int i= 0;i< codeStr.length();){
+        //关键点在于处理完一个字符编码后，要重置当前树节点指向到树的根节点
+        p = m-1;
+        for (int j = 0;j<codeStr.length();j++) {
+            if (codeStr.charAt(j)=='0') {
+                p = HT[p].lchild;
+            } else if(codeStr.charAt(j)=='1') {
+                p = HT[p].rchild;
+            } else {
+                return null;
+            }
+            if (HT[p].lchild==-1 && HT[p].rchild==-1) {
+                strb.append(CO.c[p]);
+                p = m-1;
+            }
+        }
+        /*for (int i= 0;i< codeStr.length();){
             p = m-1;
             while(true) {
                 if (codeStr.charAt(i)=='0'){
@@ -126,7 +140,7 @@ public class Huffman {
                     break;
                 }
             }
-        }
+        }*/
         return new String(strb);
     }
 
