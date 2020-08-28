@@ -2,7 +2,9 @@ import java.util.Iterator;
 
 public class test {
 
+
     public static void main(String[] args) {
+
 
         //测试迭代器
         /*LinkList<Integer> linkList = new LinkList<>();
@@ -64,7 +66,7 @@ public class test {
         System.out.println(codeTable.toString());*/
 
         //测试huffman编码解码
-        char[] sym = {'北','京','天','很','蓝','人','好'};
+        /*char[] sym = {'北','京','天','很','蓝','人','好'};
         double[] wei = {8,8,2,7,3,6,6};
         Huffman ht = new Huffman(sym,wei);
         ht.createHuffmanTree();
@@ -74,7 +76,7 @@ public class test {
         String code = ht.HuffmanCode(x);
         System.out.println(code);
         String y = "00011000111100100011011111101111101111001";
-        System.out.println(ht.HuffmanDecode(y));
+        System.out.println(ht.HuffmanDecode(y));*/
 
         //测试阶乘递归
         /*Factorial factorial = new Factorial();
@@ -100,6 +102,26 @@ public class test {
         queen.count = 0;
         queen.findSite(0);
         System.out.println(queen.count);*/
+
+        //测试二叉查找树
+        B2STree<Integer> tree = new B2STree<>();
+
+        tree.add(12);
+        tree.add(15);
+        tree.add(8);
+        tree.add(10);
+        tree.add(6);
+        tree.add(9);
+        tree.add(13);
+        tree.add(14);
+        tree.add(19);
+        System.out.println(tree.toString());
+        tree.remove(19);
+        tree.remove(10);
+        tree.remove(12);
+        tree.remove(15);
+        System.out.println(tree.toString());
+
     }
 
 
